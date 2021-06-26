@@ -1,0 +1,34 @@
+
+//ADD YOUR FIREBASE LINKS HERE
+var firebaseConfig = {
+      apiKey: "AIzaSyAFzYr3s01PchzrUi9H_ICdYzofPzaopR4",
+      authDomain: "kwitter-d23aa.firebaseapp.com",
+      databaseURL: "https://kwitter-d23aa-default-rtdb.firebaseio.com",
+      projectId: "kwitter-d23aa",
+      storageBucket: "kwitter-d23aa.appspot.com",
+      messagingSenderId: "234396605599",
+      appId: "1:234396605599:web:84d8d8382556d7419cd6aa"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+function getData() {firebase.database().ref("/").on('value', function(snapshot) {document.getElementById("output").innerHTML = "";snapshot.forEach(function(childSnapshot) {childKey  = childSnapshot.key;
+       Room_names = childKey;
+      //Start code
+
+      //End code
+      });});}
+getData();
+
+function logout()
+{
+window.location = "index.html";
+}
+
+function addRoom()
+{
+      var room = document.getElementById("room_name").value 
+      console.log(room)
+firebase.database().ref("/").child(room).update({
+      purpose:"addingRoom"
+})
+}
